@@ -1,53 +1,47 @@
-// Code YouTubeDebugger Component Here
 import React from 'react';
-import ReactDom from 'react-dom'
-
-export default class YoutubeDebugger extends React.Component {
-import React from 'react';
-import ReactDOM from 'react-dom'
 
 export default class YouTubeDebugger extends React.Component {
   constructor() {
-    super();
-
+    super()
     this.state = {
       errors: [],
-      user: null, 
-      settings: { 
+      user: null,
+      settings: {
         bitrate: 8,
-        video: { 
-          resolution: '1080p' 
-        } 
-      } 
+        video: {
+          resolution: '1080p'
+        }
+      }
     }
   }
 
-  handleBitrateClick = () => {
+  changeBitRate = () => {
     this.setState({
       settings: {
         ...this.state.settings,
-        bitrate: 12,
-      },
-    });
+        bitrate: 12
+      }
+    })
   }
 
-  handleResolutionClick = () => {
+  changeResolution = () => {
     this.setState({
       settings: {
         ...this.state.settings,
         video: {
           resolution: '720p'
         }
-      },
-    });
+      }
+    })
   }
 
   render() {
-    return(
+    return (
       <div>
-        <button className="bitrate" onClick={this.handleBitrateClick}>BitRate</button>
-        <button className="resolution" onClick={this.handleResolutionClick}>Resolution</button>
+        <button className='bitrate' onClick={this.changeBitRate}>Bitrate: {this.state.settings.bitrate}</button>
+        <button className='resolution' onClick={this.changeResolution}>Resolution: {this.state.settings.video.resolution}</button>
       </div>
     )
   }
+
 }
